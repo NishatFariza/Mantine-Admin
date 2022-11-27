@@ -3,6 +3,7 @@ import {
   Container,
   NumberInput,
   Paper,
+  PasswordInput,
   TextInput,
 } from "@mantine/core";
 import Head from "next/head";
@@ -27,42 +28,30 @@ export default function Home() {
   });
 
   return (
-    <div className=" h-screen bg-slate-100 ">
-      <Container>
+    <div className=" h-screen bg-slate-200 ">
+      <div className="max-w-lg mx-auto py-20">
         <Paper p={"lg"} radius={"md"}>
-          <div className="max-w-lg mx-auto">
-            <form onSubmit={form.onSubmit(console.log)}>
-              <TextInput
-                label="Name"
-                placeholder="Name"
-                {...form.getInputProps("name")}
-              />
-              <TextInput
-                mt="sm"
-                label="Email"
-                placeholder="Email"
-                {...form.getInputProps("email")}
-              />
-              <NumberInput
-                mt="sm"
-                label="Age"
-                placeholder="Age"
-                min={0}
-                max={99}
-                {...form.getInputProps("age")}
-              />
-              <Button
-                variant="gradient"
-                gradient={{ from: "teal", to: "lime", deg: 105 }}
-                type="submit"
-                mt="sm"
-              >
-                Submit
-              </Button>
-            </form>
-          </div>
+          <form onSubmit={form.onSubmit(console.log)}>
+            <TextInput label="Name" placeholder="Name" required />
+            <TextInput
+              mt="sm"
+              required
+              label="Email"
+              placeholder="Email"
+              {...form.getInputProps("email")}
+            />
+            <PasswordInput placeholder="******" label="Password" withAsterisk />
+            <Button
+              variant="gradient"
+              gradient={{ from: "teal", to: "lime", deg: 105 }}
+              type="submit"
+              mt="sm"
+            >
+              Submit
+            </Button>
+          </form>
         </Paper>
-      </Container>
+      </div>
     </div>
   );
 }
