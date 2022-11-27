@@ -1,6 +1,9 @@
 import { Button, Paper, PasswordInput, Space, TextInput } from "@mantine/core";
 import React from "react";
-import { useForm } from "@mantine/form";
+import { z as zod } from "zod";
+import { useForm, zodResolver } from "@mantine/form";
+
+const loginformSchema = zod.object({});
 
 const login = () => {
   const form = useForm({
@@ -10,7 +13,13 @@ const login = () => {
     },
 
     // functions will be used to validate values at corresponding key
-    validate: {},
+    validate: zodResolver({
+      name: zod
+        .string()
+        .min(2, { message: "Name should have at least 2 letters" }),
+      email: zod.string().email({ message: "Invalid email" }),
+      password: zod.string().min(6).max(12)
+    }),
   });
   return (
     <div className=" h-screen bg-slate-200 ">
