@@ -4,6 +4,7 @@ import {
   NumberInput,
   Paper,
   PasswordInput,
+  Space,
   TextInput,
 } from "@mantine/core";
 import Head from "next/head";
@@ -33,14 +34,16 @@ export default function Home() {
         <Paper p={"lg"} radius={"md"}>
           <form onSubmit={form.onSubmit(console.log)}>
             <TextInput label="Name" placeholder="Name" required />
+            <Space h={"sm"} />
             <TextInput
-              mt="sm"
               required
               label="Email"
               placeholder="Email"
               {...form.getInputProps("email")}
             />
+            <Space h={"sm"} />
             <PasswordInput placeholder="******" label="Password" withAsterisk />
+            <Space h={"sm"} />
             <Button
               variant="gradient"
               gradient={{ from: "teal", to: "lime", deg: 105 }}
